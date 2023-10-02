@@ -155,26 +155,7 @@ namespace Repository.Access
             {
                 throw;
             }
-
-            //// Supondremos que el Usuario existe en la Base de Datos.
-            //// Retornamos un objeto del tipo UsuarioInfo, con toda
-            //// la información del usuario necesaria para el Token.
-            //Dictionary<string, string> regreso = new Dictionary<string, string>()
-            //{
-            //    // Id del Usuario en el Sistema de Información (BD)
-            //    {"Id" , (new Guid("B5D233F0-6EC2-4950-8CD7-F44D16EC878F")).ToString() },
-            //    {"Nombre" , "Nombre Usuario" },
-            //    {"Apellidos" , "Apellidos Usuario" },
-            //    {"Email" , "email.usuario@dominio.com" },
-
-            //};
-            //regreso.Add("Rol", "Administrador");
-
-            //return regreso;
-
-            //// Supondremos que el Usuario NO existe en la Base de Datos.
-            //// Retornamos NULL.
-            ////return null;
+             
         }
 
         // GENERAMOS EL TOKEN CON LA INFORMACIÓN DEL USUARIO
@@ -230,9 +211,6 @@ namespace Repository.Access
             }
         }
 
-        internal object ConsultaSimple(string v)
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }

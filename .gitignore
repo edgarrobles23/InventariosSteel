@@ -13,3 +13,6 @@ steelInventario.pub
 /sln-Steel/release
 /sln-Steel/app/dist
 /sln-Steel/app/node_modules
+/Aws-TestApi/Aws-TestApi/obj
+/Aws-TestApi/Aws-TestApi/bin
+/Aws-TestApi/Aws-TestApi/packages

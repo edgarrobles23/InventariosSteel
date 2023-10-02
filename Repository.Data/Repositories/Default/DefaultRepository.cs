@@ -33,10 +33,7 @@ namespace Repository.Data.Repositories.Default
                 var schema = "dbo";
 
                 if (objParams.ContainsKey("Schema"))
-                    schema = objParams["Schema"].ToString();
-
-
-
+                    schema = objParams["Schema"].ToString(); 
 
                 ds = ExecuteQuery(schema + "." + objParams["Method"].ToString(), objParams);
                 return ds;
