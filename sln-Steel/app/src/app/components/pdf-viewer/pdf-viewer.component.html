@@ -1,0 +1,22 @@
+<div class="grid grid-cols-12">
+  <div class="col-span-12">
+    <mat-toolbar class="bg-primary">
+      <mat-toolbar-row class="place-content-between">
+        <div>
+          <span class="text-xl leading-6 font-medium text-white" [innerHTML]="data.ContainerTitle"></span>
+          <button class="bg-white text-primary ml-3" mat-flat-button>
+            <a [download]="data.FileName" [href]="BS64">Descargar</a>
+          </button>
+        </div>
+
+        <button mat-icon-button class="" (click)="Cerrar()">
+          <mat-icon class="text-white" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+
+  <div class="col-span-12">
+    <object [data]="BS64" type="application/pdf" class="w-full" style="height: 86vh"></object>
+  </div>
+</div>

@@ -1,0 +1,208 @@
+<div class="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0">
+  <!-- Bienvenida -->
+  <div
+    class="relative hidden md:flex flex-auto items-center justify-center w-3/4 h-full p-16 lg:px-28 overflow-hidden dark:border-l bg-primary-900 backgroud-custom"
+    [ngStyle]="{
+      background: 'url(' + imageSelected + ')'
+    }"
+  >
+    <!-- Background - @formatter:off -->
+    <!-- Rings -->
+    <svg
+      class="absolute inset-0 pointer-events-none"
+      viewBox="0 0 960 540"
+      width="100%"
+      height="100%"
+      preserveAspectRatio="xMidYMax slice"
+      xmlns="http://www.w3.org/2500/svg"
+    >
+      <g class="text-gray-100 opacity-20" fill="none" stroke="currentColor" stroke-width="100">
+        <circle r="234" cx="196" cy="23"></circle>
+        <circle r="234" cx="790" cy="491"></circle>
+      </g>
+    </svg>
+    <!-- Dots -->
+    <svg
+      class="absolute -top-16 -right-16 text-gray-100"
+      viewBox="0 0 225 192"
+      width="225"
+      height="192"
+      fill="none"
+      (click)="nextImageSelected()"
+    >
+      <defs>
+        <pattern
+          id="837c3e70-6c3a-44e6-8854-cc48c737b659"
+          x="0"
+          y="0"
+          width="25"
+          height="25"
+          patternUnits="userSpaceOnUse"
+        >
+          <rect x="0" y="0" width="4" height="4" fill="currentColor"></rect>
+        </pattern>
+      </defs>
+      <rect width="225" height="192" fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)"></rect>
+    </svg>
+    <!-- @formatter:on -->
+    <!-- Content -->
+    <div class="z-10 relative w-full max-w-4xl">
+      <div class="text-8xl font-bold leading-none text-gray-100">
+        <div style="text-shadow: 1px 0px 4px black">E-commerce</div>
+        <div style="text-shadow: 1px 0px 4px black">&Tab; Médicos</div>
+      </div>
+      <div
+        class="mt-16 p-8 text-xl leading-6 text-white bg-opacity-50 bg-gray-300 dark:bg-gray-800 dark:text-white dark:bg-opacity-50"
+        style="font-weight: 500"
+      >
+        <div class="flex w-full">
+          <div class="flex-grow">
+            <div class="flex items-stretch">
+              <i class="material-icons">check_circle</i>
+              <span>Tienda en línea</span>
+            </div>
+          </div>
+          <div class="flex-grow">
+            <div class="flex items-stretch">
+              <i class="material-icons">check_circle</i>
+              <span>Facturación</span>
+            </div>
+          </div>
+          <div class="flex-none">
+            <div class="flex items-stretch">
+              <i class="material-icons">check_circle</i>
+              <span>Y más...</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex w-full">
+          <div class="flex-grow">
+            <div class="flex items-stretch">
+              <i class="material-icons">check_circle</i>
+              <span>Compras:Tienda Online</span>
+            </div>
+          </div>
+          <div class="flex-grow">
+            <div class="flex items-stretch">
+              <i class="material-icons">check_circle</i>
+              <span> Visualización de Información:Tienda Online </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-center mt-16">
+        <div class="grid gap-x-8 gap-y-4 grid-cols-3">
+          <span
+            *ngFor="let it of ['dh.png', 'oca.png', 'dheast.png']"
+            class="flex-0 w-30 h-30 rounded-full ring-1 ring-offset-1 ring-gray-500 ring-offset-gray-800 object-cover bg-empresa"
+            [ngStyle]="{ background: 'url(assets/images/logo/' + it + ')' }"
+          >
+          </span>
+        </div>
+      </div>
+      <div class="flex justify-center mt-8">
+        <div
+          class="ml-4 font-medium tracking-tight p-3 text-white bg-opacity-50 bg-gray-300 dark:bg-gray-800 dark:text-white dark:bg-opacity-50"
+          style="text-shadow: 1px 1px 6px black"
+        >
+          Desarrollado por Doctors Hospital. 2021
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <div
+    class="md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full md:w-1/4 py-8 px-4 sm:p-12 md:p-16 sm:rounded-2xl md:rounded-none sm:shadow md:shadow-none sm:bg-card"
+  >
+    <div class="w-full max-w-90 sm:w-90 mx-auto sm:mx-0">
+      <div class="flex-wrap">
+        <!-- Titulo -->
+        <div
+          class="flex-1 mt-8 text-4xl font-extrabold tracking-tight leading-tight pb-12 text-primary-700"
+          style="text-align: center"
+        >
+          Registro
+        </div>
+      </div>
+
+      <!-- Alert -->
+      <fuse-alert
+        class="mt-8 -mb-4"
+        *ngIf="showAlert"
+        [appearance]="'outline'"
+        [showIcon]="false"
+        [type]="alert.type"
+        [@shake]="alert.type === 'error'"
+      >
+        {{ alert.message }}
+      </fuse-alert>
+
+      <!-- Form -->
+      <form class="mt-8" [formGroup]="formLogin" #signInNgForm="ngForm">
+        <!-- Hospital -->
+        <mat-form-field class="w-full">
+          <mat-label>Hospital</mat-label>
+          <mat-select [formControlName]="'IdHospital'">
+            <mat-option *ngFor="let hospital of hospitales" [value]="hospital.Id">
+              {{ hospital.Name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Separator -->
+        <div class="flex items-center mt-4 mb-6">
+          <div class="flex-auto mt-px border-t"></div>
+        </div>
+
+        <!-- Usuario -->
+        <mat-form-field class="w-full">
+          <mat-label>Usuario</mat-label>
+          <input id="Usuario" matInput [formControlName]="'Usuario'" type="number" />
+          <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+        </mat-form-field>
+
+        <!-- Contraseña -->
+        <mat-form-field class="w-full">
+          <mat-label>Contraseña</mat-label>
+          <input id="Password" matInput type="password" [formControlName]="'Password'" #passwordField />
+          <button
+            mat-icon-button
+            type="button"
+            (click)="
+              passwordField.type === 'password' ? (passwordField.type = 'text') : (passwordField.type = 'password')
+            "
+            matSuffix
+          >
+            <mat-icon
+              class="icon-size-5"
+              *ngIf="passwordField.type === 'password'"
+              [svgIcon]="'heroicons_solid:eye'"
+            ></mat-icon>
+            <mat-icon
+              class="icon-size-5"
+              *ngIf="passwordField.type === 'text'"
+              [svgIcon]="'heroicons_solid:eye-off'"
+            ></mat-icon>
+          </button>
+          <!-- <mat-error  >{{_helperService.getErrorInDontrol(formLogin.controls['Password'].errors)}}</mat-error> -->
+        </mat-form-field>
+
+        <!-- Submit button -->
+        <button
+          class="w-full mt-6 bg-primary-700 text-white rounded-sm disabled:opacity-75"
+          mat-raised-button
+          [disabled]="formLogin.disabled || !formLogin.get('Password').value || !formLogin.get('Usuario').value"
+          (click)="SignIn()"
+        >
+          <span>Iniciar sesión</span>
+        </button>
+      </form>
+      <div class="inline-flex items-end justify-center w-full mt-1.5 text-center">
+        <a class="text-md font-medium text-primary-500 hover:underline" [routerLink]="['/forgot-password']">
+          ¿Quieres recuperar tu contraseña?
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

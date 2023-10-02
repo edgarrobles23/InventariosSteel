@@ -1,0 +1,29 @@
+<div class="relative h-full" [ngClass]="classCustom || ''">
+  <mat-form-field class="w-full absolute top-0 left-0 z-10 mb-0 input-search-google dark:bg-gray-700">
+    <input
+      type="text"
+      (keydown.enter)="$event.preventDefault()"
+      placeholder="Busqueda de dirección"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="off"
+      type="text"
+      matInput
+      #search
+    />
+  </mat-form-field>
+  <agm-map
+    class="w-full h-full absolute left-0 min-h-90"
+    [latitude]="ParamsMap.Latitude"
+    [longitude]="ParamsMap.Longitude"
+    [zoom]="ParamsMap.Zoom"
+    [mapTypeId]="'roadmap' || 'hybrid' || 'satellite' || 'terrain'"
+  >
+    <agm-marker
+      [latitude]="ParamsMap.Latitude"
+      [longitude]="ParamsMap.Longitude"
+      [markerDraggable]="true"
+      (dragEnd)="markerDragEnd($event)"
+    ></agm-marker>
+  </agm-map>
+</div>

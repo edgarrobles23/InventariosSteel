@@ -1,0 +1,15 @@
+<mat-form-field class="w-full">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    matInput
+    [matDatepicker]="datePicker"
+    [formControl]="fecha"
+    readonly
+    (click)="datePicker.open()"
+    class="cursor-pointer"
+    [matDatepickerFilter]="filter"
+    (dateChange)="EventSelectDate($event.value)"
+  />
+  <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+  <mat-datepicker #datePicker></mat-datepicker>
+</mat-form-field>

@@ -1,0 +1,22 @@
+<img
+    matTooltip="Cambiar imágen"
+    matTooltipPosition="above"
+    [src]="formImagen.value || imagenDefault"
+    class="rounded-md hover:opacity-50 cursor-pointer dark:filter-invert"
+    (click)="clickImagen()"
+    [ngClass]="classCustom || 'max-w-lg h-max-28'"
+    style="width: 100%!important;border: 1px solid #e7e7e759;"
+>
+<input
+    #imagen
+    type="file"
+    accept="image/x-png, image/jpeg"
+    class="inputFile"
+    (change)="imagenSeleccionada($event.srcElement.files)"
+>
+<mat-error
+    style="margin-top: 1px"
+    *ngIf="Required ? formImagen.hasError('required') : false"
+>
+    La imágen es requerida
+</mat-error>

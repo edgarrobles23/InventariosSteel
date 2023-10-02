@@ -1,0 +1,15 @@
+ssh-Steel-github
+ssh-Steel-github.pub
+steelInventario
+steelInventario.pub
+/packages
+/.vs
+/Repository.Access/bin
+/Repository.Access/obj
+/Repository.Data/bin
+/Repository.Data/obj
+/sln-Steel/bin
+/sln-Steel/obj
+/sln-Steel/release
+/sln-Steel/app/dist
+/sln-Steel/app/node_modules

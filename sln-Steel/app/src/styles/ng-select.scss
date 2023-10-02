@@ -1,0 +1,17 @@
+.ng-select {
+  .ng-select-container {
+    min-height: 48px;
+    margin-top: 5px;
+  }
+}
+
+.ng-select.ng-select-single {
+  .ng-select-container {
+    .ng-value-container {
+      .ng-input {
+        top: 0.9rem;
+        justify-content: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  margin: auto;
+  .mat-table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+  }
+  .mat-row,
+  .mat-header-row {
+    display: table-row;
+    height: 30px !important;
+  }
+  .mat-cell,
+  .mat-header-cell {
+    padding: 0px 3px;
+    line-break: unset;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+    text-align: left;
+    scroll-margin-top: 5rem;
+    font-size: 11px;
+    font-weight: 600;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}

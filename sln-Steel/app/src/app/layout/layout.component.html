@@ -1,0 +1,10 @@
+<empty-layout *ngIf="layout === 'empty'"> </empty-layout>
+
+<dense-layout *ngIf="layout === 'dense'"></dense-layout>
+<div
+  class="w-full font-semibold bg-red-800 block z-50 fixed text-white text-md text-center bottom-0"
+  *ngIf="siteMode === 'dev'"
+>
+  API Apuntando a Desarrollo.... <span> {{ siteMode }}</span
+  >....<span>(Linked Server: {{ linkedServer || 'n/a' }})</span>
+</div>

@@ -1,0 +1,64 @@
+.mat-expansion-panel-header.mat-expanded {
+  height: 40px !important;
+}
+
+::ng-deep .mat-expansion-panel-body {
+  padding: 0.5rem !important;
+}
+.mat-form-field.mat-form-field-appearance-fill.mat-form-field-has-label .mat-form-field-wrapper {
+  margin-bottom: 0px !important;
+}
+.mat-expansion-panel-body {
+  padding: 0 7px 8px !important;
+}
+
+.ng-select .ng-select-container {
+  min-height: 34px;
+  max-height: 38px;
+  font-size: 12px;
+  margin-top: 1px;
+}
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+  font-size: 8px;
+  margin-bottom: 3px;
+  color: #fff;
+  background-color: #00529a;
+  border-radius: 6px;
+  margin-right: 5px;
+}
+
+.mat-cell,
+td {
+  @apply text-md;
+}
+
+.mat-slider-horizontal {
+  height: 35px !important;
+  margin-top: -15px;
+}
+
+.separator-custom {
+  vertical-align: middle;
+  height: 35px;
+  top: -10px;
+}
+
+.w-48per {
+  width: 48%;
+}
+.w-4per {
+  width: 4%;
+}
+.w-6per {
+  width: 6% !important;
+}
+
+::ng-deep .mat-sort-header-content {
+  width: 100% !important;
+  display: block !important;
+}
+
+.mat-sort-header-content {
+  width: 100% !important;
+  display: block !important;
+}

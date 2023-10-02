@@ -1,0 +1,52 @@
+<form class="font-sans w-full" [formGroup]="profileForm" #profileInNgForm="ngForm">
+  <div class="flex-auto p-2">
+    <div class="flex flex-wrap">
+      <h1 class="flex-auto text-lg font-semibold text-slate-900 dark:text-white">Datos personales</h1>
+      <div class="text-lg font-semibold text-slate-500"></div>
+      <div class="flex items-center mt-4 mb-2">
+        <div class="flex-auto mt-px border-t"></div>
+      </div>
+
+      <div class="grid grid-cols-12 w-full">
+        <div class="col-span-12 flex justify-center px-2 sm:col-span-12 md:col-span-3 lg:col-span-3 xl:col-span-3">
+          <!-- [classCustom]="'absolute inset-0 w-full h-full object-cover'" -->
+          <image-picker
+            [classCustom]="'w-full  h-max-100  w-max-370'"
+            [Required]="false"
+            formControlName="Image"
+            (imagenCambiada)="UpdateProfile($event)"
+          ></image-picker>
+        </div>
+
+        <div
+          class="col-span-12 grid gap-2 grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-3 sm:col-span-12 md:col-span-9 lg:col-span-9 xl:col-span-9 pt-2"
+        >
+          <!-- Nombre -->
+          <mat-form-field class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-12">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="NombreCompleto" formControlName="NombreCompleto" />
+          </mat-form-field>
+          <!-- Email -->
+          <mat-form-field class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-12">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" formControlName="Email" />
+          </mat-form-field>
+
+          <mat-form-field class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-12">
+            <mat-label>Modo</mat-label>
+            <input matInput placeholder="Modo" formControlName="Modo" />
+          </mat-form-field>
+
+          <mat-form-field class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-12">
+            <mat-label>Thema</mat-label>
+            <mat-select formControlName="Theme" name="Theme" (selectionChange)="UpdateProfile($event.value)">
+              <mat-option *ngFor="let theme of Themes" [value]="theme.Theme">
+                {{ theme.Theme }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

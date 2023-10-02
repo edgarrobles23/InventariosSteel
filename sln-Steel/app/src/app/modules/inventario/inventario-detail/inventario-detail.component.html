@@ -1,0 +1,52 @@
+<div class="flex flex-row p-2 bg-card rounded-2xl shadow">
+  <div class="my-2 space-y-8 flex-col w-full">
+    <!-- <div class="flex flex-col">
+      <div class="flex items-center">
+        <div
+          class="flex items-center justify-center w-14 h-14 rounded bg-red-100 text-red-800 dark:bg-red-600 dark:text-red-50"
+        >
+          <mat-icon class="text-current" [svgIcon]="'mat_outline:business'"></mat-icon>
+        </div>
+          <div class="flex-auto ml-4 leading-none">
+          <div class="text-sm font-medium text-secondary">Aseguradora</div>
+          <div class="mt-2 font-medium text-md">{{ ParamItem.Institucion }}</div>
+          <mat-progress-bar
+            class="mt-3 rounded-full"
+            [color]="'warn'"
+            [mode]="'determinate'"
+            [value]="50"
+          ></mat-progress-bar>
+        </div>
+      </div>
+    </div> -->
+    <div class="flex flex-col">
+      <div class="flex items-center">
+        <div
+          class="flex items-center justify-center w-14 h-14 rounded bg-indigo-100 text-indigo-800 dark:bg-indigo-600 dark:text-indigo-50"
+        >
+          <mat-icon class="text-current" [svgIcon]="'mat_outline:medical_services'"></mat-icon>
+        </div>
+        <div class="flex-auto ml-4 leading-none">
+          <div class="text-sm font-medium text-secondary">Médico</div>
+          <div class="mt-2 font-medium text-md">{{ ParamItem.Medico }}</div>
+          <mat-progress-bar class="mt-3 rounded-full" [mode]="'determinate'" [value]="100"></mat-progress-bar>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col">
+      <div class="flex items-center">
+        <div
+          class="flex items-center justify-center w-14 h-14 rounded bg-teal-100 text-teal-800 dark:bg-teal-600 dark:text-teal-50"
+        >
+          <mat-icon class="text-current" [svgIcon]="'mat_outline:notes'"></mat-icon>
+        </div>
+        <div class="flex-auto ml-4 leading-none">
+          <div class="text-sm font-medium text-secondary">Motivo Ingreso</div>
+          <div class="mt-2 font-medium text-md">{{ ParamItem.MotivoIngreso }}</div>
+          <mat-progress-bar class="mt-3 rounded-full" [mode]="'determinate'" [value]="40"></mat-progress-bar>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="my-2 space-y-8 flex-col w-full bg-red-400"></div> -->
+</div>

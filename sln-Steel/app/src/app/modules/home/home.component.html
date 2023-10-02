@@ -1,0 +1,77 @@
+<div class="flex flex-col flex-auto min-w-0">
+  <!-- Header -->
+  <div class="bg-card">
+    <div class="flex flex-col w-full max-w-screen-xl mx-auto px-6 sm:px-8">
+      <div class="flex flex-col sm:flex-row flex-auto sm:items-center min-w-0 my-8 sm:my-12">
+        <!-- Avatar and name -->
+        <div class="flex flex-auto items-center min-w-0">
+          <div class="flex-0 w-16 h-16 rounded-full overflow-hidden">
+            <img class="w-full h-full object-cover" [src]="user?.Image" />
+          </div>
+          <div class="flex flex-col min-w-0 ml-4">
+            <div class="text-2xl md:text-5xl font-semibold tracking-tight leading-7 md:leading-snug truncate">
+              ¡Bienvenido, <small>{{ user?.Nombre | capitalize }}</small
+              >!
+            </div>
+          </div>
+        </div>
+        <!-- Actions -->
+      </div>
+      <!-- Project selector -->
+      <div
+        class="relative flex self-start pt-2 pb-1 pl-5 pr-4 cursor-pointer overflow-hidden rounded-t-xl border border-b-0 bg-default"
+        matRipple
+      >
+        <div class="flex items-center">
+          <div class="overflow-hidden">
+            <div class="font-medium leading-6 truncate">{{ 'Menu' }}</div>
+          </div>
+          <div class="flex items-center justify-center pl-2">
+            <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:chevron-down'"></mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="flex-auto border-t -mt-px pt-4 sm:pt-6">
+    <div class="w-full max-w-screen-xl mx-auto text-center">
+      <label class="text-2xl w-full text-center xs:text-2xl sm:text-2xl md:text-4xl lg:text-4xl xl:text-4xl"
+        >¿Qué deseas <span class="text-primary">realizar hoy?</span></label
+      >
+      <!-- Tabs -->
+      <div class="sm:px-2 bg-card shadow rounded-2xl py-4">
+        <div class="grid grid-cols-2 gap-4 w-full min-w-0 content-center">
+          <div class="flex w-full justify-center">
+            <a
+              class="grid bg-primary hover:bg-primary-600 hover:h-64 hover:w-64 shadow h-64 w-64 md:h-64 lg:h-64 xl:h-64 md:w-64 lg:w-64 xl:w-64 rounded-full content-center border-solid border-2 border-primary"
+              href="./Inventario"
+            >
+              <mat-icon [svgIcon]="'heroicons_outline:document'" class="h-12 w-full text-white"></mat-icon>
+              <div class="md:text-lg lg:text-lg xl:md:text-lg font-extrabold text-primary-900 text-md">Inventario</div>
+
+              <div class="text-xs px-2 md:text-lg lg:text-lg xl:md:text-lg font-medium text-white">
+                Consulta inventario
+              </div>
+            </a>
+          </div>
+          <!-- Resultados -->
+          <div class="flex w-full justify-center">
+            <a
+              class="grid bg-primary hover:bg-primary-600 hover:h-64 hover:w-64 shadow h-64 w-64 md:h-64 lg:h-64 xl:h-64 md:w-64 lg:w-64 xl:w-64 rounded-full content-center border-solid border-2 border-primary"
+              href="./profile/InformacionPersonal"
+            >
+              <mat-icon [svgIcon]="'heroicons_outline:user'" class="h-12 w-full text-white"></mat-icon>
+              <div class="md:text-lg lg:text-lg xl:md:text-lg font-extrabold text-primary-900 text-md">Perfil</div>
+
+              <div class="text-xs px-2 md:text-lg lg:text-lg xl:md:text-lg font-medium text-white">
+                Revisa tu perfil de usuario
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

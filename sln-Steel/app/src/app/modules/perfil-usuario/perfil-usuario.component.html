@@ -1,0 +1,19 @@
+<div class="w-full min-w-0">
+  <div class="p-4 sm:p-3 lg:pr-4 lg:pl-4">
+    <fuse-card class="p-4 lg:w-full sm:w-full text-center h-full">
+      <div class="grid divide-y divide-gray-200 w-full">
+        <ng-container *ngTemplateOutlet="Navegation"></ng-container>
+        <router-outlet></router-outlet>
+      </div>
+    </fuse-card>
+  </div>
+</div>
+
+<!-- Template -->
+<ng-template #Navegation>
+  <app-nav>
+    <app-nav-item routerLink="/profile/InformacionPersonal" [isActive]="tabActive === 0" (click)="tabActive = 0">
+      Información Personal
+    </app-nav-item>
+  </app-nav>
+</ng-template>

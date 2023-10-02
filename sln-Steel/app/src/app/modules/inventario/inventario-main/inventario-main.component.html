@@ -1,0 +1,413 @@
+<div class="w-full clase1" #Module>
+  <section class="grid grid-rows-1 grid-cols-1 w-full h-full bg-white dark:bg-black dark:bg-opacity-5">
+    <div class="pt-4 px-2">
+      <!-- Loader -->
+      <div class="inset-x-0 bottom-0" *ngIf="isLoading">
+        <mat-progress-bar [mode]="'indeterminate'"></mat-progress-bar>
+      </div>
+      <!-- Filtros -->
+      <ng-container *ngTemplateOutlet="FilterParams"></ng-container>
+      <!-- Actions Buttons -->
+      <ng-container *ngTemplateOutlet="ActionsButtons"></ng-container>
+      <!-- Table -->
+      <ng-container *ngTemplateOutlet="TableDirFiscal"></ng-container>
+      <!-- No information -->
+      <!-- <ng-container *ngTemplateOutlet="noInformation"></ng-container> -->
+    </div>
+  </section>
+</div>
+
+<!-- Template Filters Params -->
+<ng-template #FilterParams>
+  <mat-accordion>
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+      [expanded]="true"
+      class="bg-slate-200 dark:bg-gray-700"
+    >
+      <mat-expansion-panel-header class="bg-white dark:bg-gray-800" #FilterParamsDiv>
+        <mat-panel-title class="text-primary dark:text-white">Filtros de Búsqueda</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div #FilterParamsDiv2>
+        <form class="flex flex-row flex-wrap w-full gap-x-1" [formGroup]="FilterParamsFg" #filterParamsNg="ngForm">
+          <div class="flex flex-col w-full first-line: sm:w-full md:w-1/6 lg:w-1/6">
+            <h3 class="example-h2">Mil</h3>
+            <mat-card-content class="w-full">
+              <mat-form-field class="mb-0 text-sm w-48per">
+                <input
+                  matInput
+                  placeholder="Mínimo"
+                  matTooltip="Mínimo"
+                  autocomplete="off"
+                  type="number"
+                  [formControlName]="'MilMin'"
+                />
+              </mat-form-field>
+              <div class="mat-form-field text-2xl text-center separator-custom w-4per">-</div>
+              <mat-form-field class="mb-0 text-sm w-48per">
+                <input
+                  matInput
+                  placeholder="Máximo"
+                  matTooltip="Máximo"
+                  type="number"
+                  autocomplete="off"
+                  [formControlName]="'MilMax'"
+                />
+              </mat-form-field>
+            </mat-card-content>
+          </div>
+          <div class="flex flex-col w-full sm:w-full md:w-1/6 lg:w-1/6">
+            <h3 class="example-h2">Médida</h3>
+            <mat-card-content class="w-full">
+              <mat-form-field class="mb-0 text-sm w-48per">
+                <input
+                  matInput
+                  placeholder="Mínimo"
+                  matTooltip="Mínimo"
+                  type="number"
+                  autocomplete="off"
+                  [formControlName]="'MedidaMin'"
+                />
+              </mat-form-field>
+              <div class="mat-form-field text-2xl text-center separator-custom w-4per">-</div>
+              <mat-form-field class="mb-0 text-sm w-48per">
+                <input
+                  matInput
+                  placeholder="Máximo"
+                  type="number"
+                  autocomplete="off"
+                  [formControlName]="'MedidaMax'"
+                  matTooltip="Máximo"
+                />
+              </mat-form-field>
+            </mat-card-content>
+          </div>
+          <div class="flex flex-col w-full sm:w-full md:w-1/6 lg:w-1/6">
+            <h3 class="example-h2">Kilos</h3>
+            <mat-card-content class="w-full">
+              <mat-form-field class="mb-0 text-sm w-48per">
+                <input
+                  matInput
+                  placeholder="Mínimo"
+                  matTooltip="Mínimo"
+                  type="number"
+                  autocomplete="off"
+                  [formControlName]="'KilosMin'"
+                />
+              </mat-form-field>
+              <div class="mat-form-field text-2xl text-center separator-custom w-4per">-</div>
+              <mat-form-field class="mb-0 text-sm w-48per">
+                <input
+                  matInput
+                  placeholder="Máximo"
+                  type="number"
+                  autocomplete="off"
+                  [formControlName]="'KilosMax'"
+                  matTooltip="Máximo"
+                />
+              </mat-form-field>
+            </mat-card-content>
+          </div>
+          <div class="flex flex-col w-full sm:w-full md:w-1/6 lg:w-1/6">
+            <h3 class="example-h2">Dureza</h3>
+            <mat-card-content class="w-full">
+              <mat-form-field class="mb-0 text-sm w-48per">
+                <input
+                  matInput
+                  placeholder="Mínimo"
+                  matTooltip="Mínimo"
+                  type="number"
+                  autocomplete="off"
+                  [formControlName]="'DurezaMin'"
+                />
+              </mat-form-field>
+              <div class="mat-form-field text-2xl text-center separator-custom w-4per">-</div>
+              <mat-form-field class="mb-0 text-sm w-48per">
+                <input
+                  matInput
+                  placeholder="Máximo"
+                  type="number"
+                  autocomplete="off"
+                  [formControlName]="'DurezaMax'"
+                  matTooltip="Máximo"
+                />
+              </mat-form-field>
+            </mat-card-content>
+          </div>
+
+          <div class="flex flex-col w-full sm:w-full md:w-3/12 lg:w-3/12">
+            <h3 class="example-h2">Observaciones</h3>
+            <mat-card-content class="w-full">
+              <mat-form-field class="mb-0 text-sm w-full">
+                <input matInput [formControlName]="'Observaciones'" autocomplete="off" />
+              </mat-form-field>
+            </mat-card-content>
+          </div>
+
+          <div class="flex flex-col w-6per last: sm:w-full md:w-6per lg:w-6per mt-6">
+            <button mat-flat-button class color="primary" (click)="getInfo()">
+              <mat-icon [svgIcon]="'heroicons_outline:search'"></mat-icon>
+            </button>
+          </div>
+        </form>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</ng-template>
+
+<!-- Template Actions -->
+<ng-template #ActionsButtons>
+  <!-- Actions -->
+  <div class="text-left pt-6 pb-4 flex" #ActionsButtonsDiv>
+    <!-- Search -->
+    <mat-form-field class="fuse-mat-dense fuse-mat-no-subscript w-80 sm:w-full md:w-full lg:w-90 xl:w-90">
+      <mat-icon matPrefix [svgIcon]="'heroicons_outline:search'"></mat-icon>
+      <input
+        matInput
+        [formControl]="searchInputControl"
+        [autocomplete]="'off'"
+        [placeholder]="'Busqueda rápida por producto'"
+        (keyup)="handleKeyUp($event, 'Producto')"
+      />
+    </mat-form-field>
+  </div>
+</ng-template>
+
+<!-- Template Table -->
+<ng-template #TableDirFiscal>
+  <!-- <div class="overflow-x-auto sm:overflow-y-auto" style="max-height: 600px" cdkScrollable> -->
+  <cdk-virtual-scroll-viewport tvsItemSize="48" headerHeight="56" style="{{ BodyHeight.Table }}" #virtualScroll>
+    <table
+      class="w-full bg-transparent"
+      mat-table
+      matSort
+      [multiTemplateDataRows]="true"
+      [matSortDisableClear]="true"
+      [dataSource]="grid.data"
+    >
+      <ng-container matColumnDef="IdInventario">
+        <th mat-header-cell *matHeaderCellDef class="text-center max-w-120" mat-sort-header>Id Inventario</th>
+        <td
+          mat-cell
+          class="text-center"
+          *matCellDef="let el"
+          [textContent]="el['IdInventario']"
+          (click)="el.IdInventario && toggleDetails(el.IdInventario, 'IdInventario')"
+        ></td>
+      </ng-container>
+      <ng-container matColumnDef="FechaEntrada">
+        <th mat-header-cell *matHeaderCellDef class="text-center max-w-64" mat-sort-header>Fecha entrada</th>
+        <td
+          mat-cell
+          class="text-center"
+          *matCellDef="let el"
+          [textContent]="el['FechaEntrada'] | date : 'YYYY-MM-dd'"
+          (click)="el.IdInventario && toggleDetails(el.IdInventario, 'IdInventario')"
+        ></td>
+      </ng-container>
+      <ng-container matColumnDef="Bodega">
+        <th mat-header-cell *matHeaderCellDef class="text-center w-40">Bodega</th>
+        <td
+          mat-cell
+          class="text-center w-40"
+          *matCellDef="let el"
+          [textContent]="el['Bodega']"
+          (click)="el.IdInventario && toggleDetails(el.IdInventario, 'IdInventario')"
+        ></td>
+      </ng-container>
+      <ng-container matColumnDef="Producto">
+        <th mat-header-cell *matHeaderCellDef class="text-center max-w-280" mat-sort-header>Producto</th>
+        <td
+          mat-cell
+          class="text-center"
+          *matCellDef="let el"
+          [textContent]="el['Producto']"
+          (click)="el.Registro && toggleDetails(el.IdInventario, 'IdInventario')"
+        ></td>
+      </ng-container>
+      <ng-container matColumnDef="Referencia">
+        <th mat-header-cell *matHeaderCellDef class="text-center max-w-120" mat-sort-header>Referencia</th>
+        <td
+          mat-cell
+          class="text-center"
+          *matCellDef="let el"
+          [textContent]="el['Referencia']"
+          (click)="el.Registro && toggleDetails(el.IdInventario, 'IdInventario')"
+        ></td>
+      </ng-container>
+      <ng-container matColumnDef="NumeroRollo">
+        <th mat-header-cell *matHeaderCellDef class="text-center max-w-120" mat-sort-header>Número rollo</th>
+        <td
+          mat-cell
+          class="text-center"
+          *matCellDef="let el"
+          [textContent]="el['NumeroRollo']"
+          (click)="el.Registro && toggleDetails(el.IdInventario, 'IdInventario')"
+        ></td>
+      </ng-container>
+      <ng-container matColumnDef="Calibre">
+        <th mat-header-cell *matHeaderCellDef class="text-center max-w-120" mat-sort-header>Calibre</th>
+        <td
+          mat-cell
+          class="text-center"
+          *matCellDef="let el"
+          [textContent]="el['Calibre']"
+          (click)="el.Registro && toggleDetails(el.IdInventario, 'IdInventario')"
+        ></td>
+      </ng-container>
+      <ng-container matColumnDef="Mil">
+        <th mat-header-cell *matHeaderCellDef class="text-center w-40" mat-sort-header>Mil</th>
+        <td
+          mat-cell
+          class="text-center"
+          *matCellDef="let el"
+          [textContent]="el['Mil']"
+          (click)="el.Registro && toggleDetails(el.IdInventario, 'IdInventario')"
+        ></td>
+      </ng-container>
+
+      <ng-container matColumnDef="Medida">
+        <th mat-header-cell *matHeaderCellDef class="text-center max-w-120" mat-sort-header>Medida</th>
+        <td
+          mat-cell
+          class="text-center"
+          *matCellDef="let el"
+          [textContent]="el['Medida']"
+          (click)="el.Registro && toggleDetails(el.IdInventario, 'IdInventario')"
+        ></td>
+      </ng-container>
+      <ng-container matColumnDef="Largo">
+        <th mat-header-cell *matHeaderCellDef class="text-center max-w-120" mat-sort-header>Largo</th>
+        <td
+          mat-cell
+          class="text-center"
+          *matCellDef="let el"
+          [textContent]="el['Largo']"
+          (click)="el.Registro && toggleDetails(el.IdInventario, 'IdInventario')"
+        ></td>
+      </ng-container>
+      <ng-container matColumnDef="Dureza">
+        <th mat-header-cell *matHeaderCellDef class="text-center max-w-120" mat-sort-header>Dureza</th>
+        <td
+          mat-cell
+          class="text-center"
+          *matCellDef="let el"
+          [textContent]="el['Dureza']"
+          (click)="el.Registro && toggleDetails(el.IdInventario, 'IdInventario')"
+        ></td>
+      </ng-container>
+
+      <ng-container matColumnDef="Libras">
+        <th mat-header-cell *matHeaderCellDef class="text-center max-w-120" mat-sort-header>Libras</th>
+        <td
+          mat-cell
+          class="text-center"
+          *matCellDef="let el"
+          [textContent]="el['Libras']"
+          (click)="el.Registro && toggleDetails(el.IdInventario, 'IdInventario')"
+        ></td>
+      </ng-container>
+
+      <ng-container matColumnDef="Kilos">
+        <th mat-header-cell *matHeaderCellDef class="text-center max-w-120" mat-sort-header>Kilos</th>
+        <td
+          mat-cell
+          class="text-center"
+          *matCellDef="let el"
+          [textContent]="el['Kilos']"
+          (click)="el.Registro && toggleDetails(el.IdInventario, 'IdInventario')"
+        ></td>
+      </ng-container>
+
+      <ng-container matColumnDef="Paquete">
+        <th mat-header-cell *matHeaderCellDef class="text-center w-44" mat-sort-header>Paquete</th>
+        <td
+          mat-cell
+          class="text-center"
+          *matCellDef="let el"
+          [textContent]="el['Paquete']"
+          (click)="el.Registro && toggleDetails(el.IdInventario, 'IdInventario')"
+        ></td>
+      </ng-container>
+
+      <ng-container matColumnDef="Piezas">
+        <th mat-header-cell *matHeaderCellDef class="text-center max-w-120" mat-sort-header>Piezas</th>
+        <td
+          mat-cell
+          class="text-center"
+          *matCellDef="let el"
+          [textContent]="el['Piezas']"
+          (click)="el.Registro && toggleDetails(el.IdInventario, 'IdInventario')"
+        ></td>
+      </ng-container>
+
+      <ng-container matColumnDef="Observaciones">
+        <th mat-header-cell *matHeaderCellDef class="text-center max-w-120" mat-sort-header>Observaciones</th>
+        <td
+          mat-cell
+          class="text-center"
+          *matCellDef="let el"
+          [textContent]="el['Observaciones']"
+          (click)="el.Registro && toggleDetails(el.IdInventario, 'IdInventario')"
+        ></td>
+      </ng-container>
+
+      <ng-container matColumnDef="Proveedor">
+        <th mat-header-cell *matHeaderCellDef class="text-center max-w-120" mat-sort-header>Proveedor</th>
+        <td
+          mat-cell
+          class="text-center"
+          *matCellDef="let el"
+          [textContent]="el['Proveedor']"
+          (click)="el.Registro && toggleDetails(el.IdInventario, 'IdInventario')"
+        ></td>
+      </ng-container>
+
+      <ng-container matColumnDef="rowDetail">
+        <td class="p-0 border-b-0" mat-cell colspan="14" *matCellDef="let detalle">
+          <div
+            class="shadow-lg overflow-hidden"
+            [@expandCollapse]="
+              false && grid.rowSelected?.IdInventario === detalle.IdInventario ? 'expanded' : 'collapsed'
+            "
+          >
+            <div class="w-full">
+              <!-- Detail From Order -->
+              <app-inventario-detail
+                [ParamItem]="grid.rowSelected"
+                #OrderSelected
+                *ngIf="grid.rowSelected?.IdInventario === detalle.IdInventario"
+              >
+              </app-inventario-detail>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+      <tbody>
+        <tr class="shadow" mat-header-row *matHeaderRowDef="grid.columns; sticky: true"></tr>
+        <tr
+          class="h-9 p-8 z-index-102 row-header"
+          mat-row
+          *matRowDef="let item; columns: grid.columns"
+          [ngClass]="{
+            'bg-blue-500 text-white': grid.rowSelected === item
+          }"
+        ></tr>
+        <tr class="h-0 row-detail" mat-row *matRowDef="let row; columns: ['rowDetail']"></tr>
+      </tbody>
+    </table>
+  </cdk-virtual-scroll-viewport>
+</ng-template>
+
+<!-- Template Table -->
+<ng-template #noInformation>
+  <div #noItems *ngIf="grid.totalRows === 0">
+    <div class="flex flex-col flex-auto items-center justify-center sm:justify-start py-4 px-2">
+      <div class="flex flex-0 items-center justify-center w-14 h-14 rounded-full bg-primary-100">
+        <mat-icon class="text-white" [svgIcon]="'heroicons_outline:information-circle'"></mat-icon>
+      </div>
+      <div class="mt-5 text-4xl text-gray-500 font-semibold tracking-tight w-full text-center">No hay información</div>
+    </div>
+  </div>
+</ng-template>

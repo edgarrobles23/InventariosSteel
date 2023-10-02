@@ -1,0 +1,33 @@
+<div class="flex flex-row gap-x-2" [formGroup]="formLookup">
+  <div *ngIf="withFormField; else inputId">
+    <mat-form-field>
+      <mat-label *ngIf="labelId">{{ labelId }}</mat-label>
+      <input
+        matInput
+        nextControl
+        [next]="nextCtrl"
+        placeholder="Id"
+        formControlName="Id"
+        (keydown)="keydown($event)"
+        [id]="idNextControl"
+      />
+    </mat-form-field>
+  </div>
+  <ng-template #inputId>
+    <input
+      matInput
+      placeholder="Id"
+      formControlName="Id"
+      [id]="idNextControl"
+      (keydown)="keydown($event)"
+      class="bg-gray-200 dark:bg-gray-700 w-24 cursor-pointer rounded"
+    />
+  </ng-template>
+
+  <div *ngIf="!hideDesc" class="flex-1">
+    <mat-form-field class="w-full">
+      <mat-label>{{ labelDesc }}</mat-label>
+      <input matInput placeholder="Descripción" formControlName="Descripcion" />
+    </mat-form-field>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div
+    class="flex justify-start gap-1 back-btn"
+    (click)="navigateTo(route)"
+>
+    <mat-icon
+        [matTooltip]="tooltip"
+        svgIcon="heroicons_outline:arrow-circle-left"
+    ></mat-icon>
+    <span
+        class="text-base font-medium"
+        [matTooltip]="tooltip"
+    >
+        {{label}}
+    </span>
+</div>

@@ -1,0 +1,16 @@
+<button
+    matTooltip="Modo claro"
+    mat-icon-button
+    *ngIf="esquemaActual == 'light'"
+    (click)="configurarEsquema('dark'); configurarEsquemaBD('dark')"
+>
+    <mat-icon svgIcon="heroicons_outline:sun"></mat-icon>
+</button>
+<button
+    matTooltip="Modo oscuro"
+    mat-icon-button
+    *ngIf="esquemaActual == 'dark'"
+    (click)="configurarEsquema('light'); configurarEsquemaBD('light')"
+>
+    <mat-icon svgIcon="heroicons_outline:moon"> </mat-icon>
+</button>

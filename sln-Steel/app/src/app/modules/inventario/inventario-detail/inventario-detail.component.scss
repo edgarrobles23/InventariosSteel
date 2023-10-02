@@ -1,0 +1,9 @@
+::ng-deep .detalle-ordenCompra {
+  mat-form-field div.mat-form-field-flex {
+    min-height: 26px !important;
+    height: 26px !important;
+  }
+}
+td[class*='.mat-column'] {
+  background: red;
+}

@@ -1,0 +1,59 @@
+mat-form-field div.mat-form-field-flex {
+  min-height: 37px !important;
+  height: 37px !important;
+}
+mat-form-field .mat-input-element:disabled {
+  color: var(--primary-900) !important;
+}
+.w-max-370 {
+  max-width: 370px !important;
+}
+
+/*Color Empresas*/
+.empresa-1 {
+  background: orange;
+}
+.empresa-2 {
+  background: #0374d7;
+}
+.empresa-8 {
+  background: #368e28;
+}
+table {
+  td.mat-cell.cdk-cell {
+    @apply bg-white dark:bg-gray-800 font-sans;
+  }
+
+  th.mat-header-cell.cdk-header-cell {
+    @apply bg-gray-50 dark:bg-gray-800;
+  }
+
+  tr.mat-header-row {
+    @apply h-8 min-h-8 border-t-2;
+  }
+  .row-header {
+    td {
+      @apply hover:bg-gray-200  bg-gray-200;
+    }
+  }
+  .row-detail {
+  }
+}
+
+/*Modales en dark*/
+body.dark .mat-dialog-container,
+body .dark .mat-dialog-container {
+  border: 1px solid #ffffff6e;
+}
+
+// .mat-sort-header-arrow {
+//   color: yellow !important;
+//   background-color: black !important;
+// }
+
+// .dark {
+//   .mat-sort-header-arrow {
+//     color: red !important;
+//     background-color: #368e28 !important;
+//   }
+// }

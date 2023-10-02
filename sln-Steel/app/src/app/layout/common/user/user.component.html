@@ -1,0 +1,40 @@
+<!-- Button -->
+<button mat-icon-button [matMenuTriggerFor]="userActions">
+  <span class="relative">
+    <img class="w-7 h-7 rounded-full" *ngIf="showAvatar && Avatar" [src]="Avatar" />
+    <mat-icon *ngIf="!showAvatar || !Avatar" [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
+    <span class="absolute right-0 bottom-0 w-2 h-2 rounded-full" [ngClass]="{ 'bg-green-500': 'online' }"></span>
+  </span>
+</button>
+
+<mat-menu [xPosition]="'before'" #userActions="matMenu">
+  <!-- Logeado con -->
+  <button mat-menu-item style="pointer-events: none">
+    <span class="flex flex-col leading-none">
+      <span>Sesión iniciada con</span>
+      <span class="mt-1.5 text-md font-medium">{{ Email }}</span>
+    </span>
+  </button>
+
+  <mat-divider class="my-2"></mat-divider>
+
+  <!-- Perfil -->
+  <a button mat-menu-item (click)="goProfile()">
+    <mat-icon [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
+    <span>Perfil</span>
+  </a>
+
+  <!-- Configuración -->
+  <!-- <button mat-menu-item>
+    <mat-icon [svgIcon]="'heroicons_outline:cog'"></mat-icon>
+    <span>Configuración</span>
+  </button> -->
+
+  <mat-divider class="my-2"></mat-divider>
+
+  <!-- Cerra Sesión -->
+  <button mat-menu-item (click)="signOut()">
+    <mat-icon [svgIcon]="'heroicons_outline:logout'" class="text-warn"></mat-icon>
+    <span class="text-warn">Cerrar Sesión</span>
+  </button>
+</mat-menu>
