@@ -18,6 +18,10 @@ steelInventario.pub
 /Aws-TestApi/Aws-TestApi/packages
 /Aws-TestApiNet6/obj
 /Aws-TestApiNet6/bin
+/Aws-TestApiNet6/Repository.Access/bin
+/Aws-TestApiNet6/Repository.Access/obj
+/Aws-TestApiNet6/Repository.Data/bin
+/Aws-TestApiNet6/Repository.Data/obj
 /Aws-TestApiNet6/packages
 /Aws-TestApiNet6/release
 /Aws-TestApiNet6/.vs/*.*

@@ -5,6 +5,10 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aws-TestApiNet6", "Aws-TestApiNet6.csproj", "{8FBEB5F0-7E53-4E03-B1AE-A65166884AD6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.Access", "Repository.Access\Repository.Access.csproj", "{B90202FB-F5A5-4370-B627-BE81CDF153EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.Data", "Repository.Data\Repository.Data.csproj", "{1E665CCA-CF2A-416C-BE38-50EF95F5398A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{8FBEB5F0-7E53-4E03-B1AE-A65166884AD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FBEB5F0-7E53-4E03-B1AE-A65166884AD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FBEB5F0-7E53-4E03-B1AE-A65166884AD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B90202FB-F5A5-4370-B627-BE81CDF153EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B90202FB-F5A5-4370-B627-BE81CDF153EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B90202FB-F5A5-4370-B627-BE81CDF153EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B90202FB-F5A5-4370-B627-BE81CDF153EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E665CCA-CF2A-416C-BE38-50EF95F5398A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E665CCA-CF2A-416C-BE38-50EF95F5398A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E665CCA-CF2A-416C-BE38-50EF95F5398A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E665CCA-CF2A-416C-BE38-50EF95F5398A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

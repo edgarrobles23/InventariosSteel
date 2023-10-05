@@ -1,33 +1,45 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Repository.Access;
 
 namespace Aws_TestApiNet6.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [AllowAnonymous]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+         
+        private readonly  Base _baseController;
+        private readonly IConfiguration _configuration; 
 
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(Base baseController, IConfiguration configuration)
         {
-            _logger = logger;
+            _baseController = baseController;
+            _configuration = configuration;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+       
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            //Repository.SqlServer.Database db;
+            try
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                Dictionary<string, string> Data = new Dictionary<string, string>(); 
+                Data["Schema"] = "dbo";
+                Data["Method"] = "uspObtenerEmpresas_skrs";
+
+                var response = await _baseController.ConsultaSimpleAsync(Data);
+                return StatusCode(200, response);
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, new { Error = e.Message });
+            }
         }
     }
 }
