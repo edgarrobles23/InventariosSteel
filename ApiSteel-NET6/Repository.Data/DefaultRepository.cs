@@ -1,7 +1,6 @@
-﻿using Repository.Data.Base;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
-namespace Repository.Data.Repositories.Default
+namespace Repository.Data
 {
     public class DefaultRepository : BaseRepository
     {

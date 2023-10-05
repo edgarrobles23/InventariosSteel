@@ -1,4 +1,4 @@
-﻿using Repository.Data.Repositories.Default;
+﻿using Repository.Data;
 using System;
 using System.Collections.Generic;
 using System.Data; 

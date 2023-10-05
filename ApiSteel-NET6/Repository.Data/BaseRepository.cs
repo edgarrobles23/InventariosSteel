@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Web;
 
-namespace Repository.Data.Base
+namespace Repository.Data
 {
     public class BaseRepository
     {
