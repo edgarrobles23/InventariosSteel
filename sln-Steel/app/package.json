@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 4200 ",
     "watch1": "npm install && ng serve --port 4502 --watch --serve-path Steel",
     "steel": "ng serve --port 4502 --watch --serve-path Steel",
     "build": "ng build",
