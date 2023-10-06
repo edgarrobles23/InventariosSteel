@@ -53,7 +53,7 @@ namespace sln_Steel.Middlewares
                     && !httpContext.Request.Path.Value.Contains("/api/Login/SignIn")
                     && !httpContext.Request.Path.Value.Contains("/api/Login/Logout")
                       && !httpContext.Request.Path.Value.Contains("/api/Login/RefreshToken")
-                    && !httpContext.Request.Path.Value.Contains("/api/Catalogos/ListHospitales")
+                    && !httpContext.Request.Path.Value.Contains("/api/Catalogo/ListHospitales")
                     && !httpContext.Request.Path.Value.Contains("/api/Login/GetMenu")
                     && !httpContext.Request.Path.Value.Contains("/api/Pago/WebHook")
                     && !httpContext.Request.Path.Value.Contains("/api/Pago/WebHookManually")

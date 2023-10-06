@@ -13,14 +13,14 @@ namespace sln_Steel.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class CatalogosController : BaseController
+    public class CatalogoController : BaseController
     {
 
         private readonly Base _baseApi;
         private readonly Seguridad _seguridad;
         private readonly IConfiguration _config;
 
-        public CatalogosController(Base baseApi, IConfiguration config, Seguridad seguridad):base(config, TypeConnection.Seguridad)
+        public CatalogoController(Base baseApi, IConfiguration config, Seguridad seguridad):base(config, TypeConnection.Seguridad)
         {
             _baseApi = baseApi;
             _seguridad = seguridad;
