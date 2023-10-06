@@ -102,7 +102,7 @@ var games = new[]
 {
     "call of duty", "free fire", "doom", "half life", "team fortress", "apex legends"
 };
-app.MapGet("/", () => "Welcome to API InventariosSteel!");
+app.MapGet("/", () => "Welcome to API InventariosSteel AWS !");
 app.MapGet("/api/games", () => games);
 app.MapControllerRoute(
     name: "default",
