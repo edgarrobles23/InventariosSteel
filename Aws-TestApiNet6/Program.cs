@@ -3,8 +3,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens; 
+using Microsoft.IdentityModel.Tokens;
 using Repository.Access;
+using Aws_TestApiNet6.Utilities;
+using Aws_TestApiNet6.Middlewares;
 
 var corsPolicy = "Policy";
 
@@ -73,30 +75,37 @@ builder.Services.AddSingleton(p =>
 {
     string siteMode = builder.Configuration["siteMode"];
     var VarConfig = builder.Configuration.GetSection("config").GetSection(siteMode);
-    string conexionString = VarConfig.GetSection("DefaultConnection").Value;
-    bool linkedServerActivo = Boolean.Parse(VarConfig.GetSection("LinkedServer").GetSection("Activo").Value);
+    string? conexionString = VarConfig.GetSection("DefaultConnection").Value;
+    var ls = VarConfig.GetSection("LinkedServer");
     string? linkedServer = null;
-    if (linkedServerActivo)
-        linkedServer = VarConfig.GetSection("LinkedServer").GetSection("Name").Value;
-    return new  Base(Base.ConnectionType.Default, conexionString, linkedServer);
+
+    if (ls != null && ls.GetSection("Activo").Value != null)
+
+        if (Convert.ToBoolean(ls.GetSection("Activo").Value) == true)
+            linkedServer = VarConfig.GetSection("LinkedServer").GetSection("Name").Value;
+
+    return new Base(Base.ConnectionType.Default, conexionString, linkedServer);
 });
+builder.Services.AddSingleton<Seguridad>();
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
 var app = builder.Build();
-//app.UseSwagger();
-//app.UseSwaggerUI();
-app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseMiddleware<TokenMiddleware>();// app.UseHttpsRedirection();
+
 var games = new[]
 {
     "call of duty", "free fire", "doom", "half life", "team fortress", "apex legends"
 };
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => "Welcome to API InventariosSteel!");
 app.MapGet("/api/games", () => games);
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
+
 app.Run();

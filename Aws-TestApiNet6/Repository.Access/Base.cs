@@ -1,4 +1,5 @@
-﻿using Repository.Data;
+﻿using Microsoft.Extensions.Configuration;
+using Repository.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,16 +12,14 @@ namespace Repository.Access
     public partial class Base
     {
         private string conexionString;
-        private string? linkedServer;
+        private string? linkedServer; 
 
         public enum ConnectionType
         {
             Default,
             Hospital,
-            CentroMezclas,
-            Contabilidad,
-            OrdenesCompra,
-            appCompras
+            Steel,
+            Seguridad
         }
 
         private ConnectionType connectionType = ConnectionType.Default;
@@ -29,7 +28,8 @@ namespace Repository.Access
         {
             connectionType = tc;
             conexionString = connectionString;
-            linkedServer = LinkedServer;
+            linkedServer = LinkedServer; 
+
         }
 
         public Dictionary<string, object> ConsultaMultiple(Dictionary<string, string> datos)
