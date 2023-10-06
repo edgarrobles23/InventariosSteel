@@ -49,7 +49,7 @@ export class HospitalesDataResolver implements Resolve<any> {
   constructor(private _httpService: HttpService) {}
 
   async resolve(): Promise<any> {
-    const data = await this._httpService.getFromQueryAsync('Catalogos', 'ListHospitales', {});
+    const data = await this._httpService.getFromQueryAsync('Catalogo', 'ListHospitales', {});
     return data;
   }
 }
@@ -61,7 +61,7 @@ export class EmpresasUsuarioResolver implements Resolve<any> {
   constructor(private _httpService: HttpService) {}
 
   async resolve(): Promise<any> {
-    const data = await (await this._httpService.postFromBodyAsync('Catalogos', 'EmpresasUsuario', {})).toPromise();
+    const data = await (await this._httpService.postFromBodyAsync('Catalogo', 'EmpresasUsuario', {})).toPromise();
     return data;
   }
 }

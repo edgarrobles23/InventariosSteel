@@ -59,7 +59,7 @@ export class AuthLoginInComponent implements AfterViewInit {
     await this.getEmpresas();
   }
   async getEmpresas() {
-    this._httpService.getFromQuery('Catalogos', 'ListEmpresas', {}).subscribe({
+    this._httpService.getFromQuery('Catalogo', 'ListEmpresas', {}).subscribe({
       next: (res: any) => {
         this.empresas = res;
       },

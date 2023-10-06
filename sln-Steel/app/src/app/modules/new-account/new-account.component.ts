@@ -1,4 +1,3 @@
-
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable curly */
 /* eslint-disable no-trailing-spaces */
@@ -18,55 +17,55 @@ import { HelperService } from 'app/services/helper.service';
 import { LocationStrategy } from '@angular/common';
 
 @Component({
-    selector: 'app-new-account',
-    templateUrl: './new-account.component.html',
-    styleUrls: ['./new-account.component.scss'],
-    encapsulation: ViewEncapsulation.None,
+  selector: 'app-new-account',
+  templateUrl: './new-account.component.html',
+  styleUrls: ['./new-account.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   animations: fuseAnimations,
 })
 export class NewAccountComponent implements AfterViewInit {
-    @ViewChild('signInNgForm')  signInNgForm: NgForm;
+  @ViewChild('signInNgForm') signInNgForm: NgForm;
 
-    arrayImages: any = [ '1.jpg','2.jpg', '3.jpg',''];
-    imageSelected: string = 'assets/images/login/1.jpg';
-    index: number = 1;
-    alert: { type: FuseAlertType; message: string } = {
+  arrayImages: any = ['1.jpg', '2.jpg', '3.jpg', ''];
+  imageSelected: string = 'assets/images/login/1.jpg';
+  index: number = 1;
+  alert: { type: FuseAlertType; message: string } = {
     type: 'success',
     message: '',
-    };
-    formLogin: FormGroup;
-    showAlert: boolean = false;
+  };
+  formLogin: FormGroup;
+  showAlert: boolean = false;
 
-    hospitales = [];
+  hospitales = [];
 
-    constructor(
-        private _authService: AuthService,
-        private _httpService: HttpService,
-        private _formBuilder: FormBuilder,
-        private _router: Router,
-        private _notify: GeneralService.Notify,
-        private _loading: GeneralService.Loading,
-        private _changeDetectorRef: ChangeDetectorRef,
-        public _helperService: HelperService,
-        private _tokenService: TokenService,
-        private location: LocationStrategy
-      ) {
-        this.formLogin = this._formBuilder.group({
-            Usuario: ['', [Validators.required]],
-            Password: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(10)]],
-            IdHospital: [2]
-          });
-      }
+  constructor(
+    private _authService: AuthService,
+    private _httpService: HttpService,
+    private _formBuilder: FormBuilder,
+    private _router: Router,
+    private _notify: GeneralService.Notify,
+    private _loading: GeneralService.Loading,
+    private _changeDetectorRef: ChangeDetectorRef,
+    public _helperService: HelperService,
+    private _tokenService: TokenService,
+    private location: LocationStrategy
+  ) {
+    this.formLogin = this._formBuilder.group({
+      Usuario: ['', [Validators.required]],
+      Password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
+      IdHospital: [2],
+    });
+  }
 
   /**
    * On init
    */
   async ngAfterViewInit() {
-    await  this.getHospitales();
+    await this.getHospitales();
   }
 
   async getHospitales() {
-    this._httpService.getFromQuery('Catalogos', 'ListHospitales', {}).subscribe({
+    this._httpService.getFromQuery('Catalogo', 'ListHospitales', {}).subscribe({
       next: (res: any) => {
         this.hospitales = res;
       },
@@ -81,20 +80,23 @@ export class NewAccountComponent implements AfterViewInit {
    */
   SignIn(): void {
     // Return if the form is invalid
-    if (this.formLogin.invalid)
-      return;
-      this._loading.Show('Iniciando Sesión');
-      // Disable the form
-      this.formLogin.disable();
+    if (this.formLogin.invalid) return;
+    this._loading.Show('Iniciando Sesión');
+    // Disable the form
+    this.formLogin.disable();
 
-      // Hide the alert
-      this.showAlert = false;
+    // Hide the alert
+    this.showAlert = false;
 
-      // Sign in
-      this._authService.signIn(
-        Object.assign(this.formLogin.value,
-            this.hospitales.find( x=>x.Id=this.formLogin.controls.IdHospital.value))
-      ).subscribe({
+    // Sign in
+    this._authService
+      .signIn(
+        Object.assign(
+          this.formLogin.value,
+          this.hospitales.find((x) => (x.Id = this.formLogin.controls.IdHospital.value))
+        )
+      )
+      .subscribe({
         next: (data: any) => {
           this._authService.setLocalstorage(data);
           this._tokenService.initCheckStatusToken();
@@ -122,12 +124,12 @@ export class NewAccountComponent implements AfterViewInit {
           this._loading.Stop();
         },
       });
-    }
+  }
 
-/**
- * Funciones para manejo de imagenes en el Inicio de sesion
- */
- nextImageSelected(): void {
+  /**
+   * Funciones para manejo de imagenes en el Inicio de sesion
+   */
+  nextImageSelected(): void {
     const image = this.doesFileExist('assets/images/login/' + (this.index + 1) + '.jpg');
     if (image) {
       this.index++;
@@ -147,7 +149,7 @@ export class NewAccountComponent implements AfterViewInit {
         req.open('GET', image, false);
         req.send();
         if (req.status === 200) {
-            _image = image;
+          _image = image;
         }
       }
       return _image;

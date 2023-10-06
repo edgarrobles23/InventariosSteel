@@ -1,5 +1,5 @@
 {
-  "urlApi": "http://localhost:5007",
+  "urlApi": "https://3yepp7hx9x.us-east-1.awsapprunner.com",
   "IdAplicacion": "222",
   "Production": false
 }
