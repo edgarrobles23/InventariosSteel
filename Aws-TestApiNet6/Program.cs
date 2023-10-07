@@ -22,7 +22,8 @@ builder.Services.AddCors(opt =>
         builder.AllowAnyHeader();
         builder.AllowAnyMethod();
         builder.AllowCredentials();
-        builder.WithOrigins(origins);
+        //builder.WithOrigins(origins);
+        builder.AllowAnyOrigin();
     });
 });
 
@@ -60,17 +61,7 @@ TokenValidationParameters CreateTokenValidationParameters()
     return result;
 }
 
-builder.Services.AddCors(opt =>
-{
-    opt.AddPolicy(corsPolicy, builder =>
-    {
-        builder.AllowAnyHeader();
-        builder.AllowAnyMethod();
-        builder.AllowCredentials();
-        //builder.WithOrigins(origins);
-        builder.AllowAnyOrigin();
-    });
-});
+
 
 builder.Services.AddSingleton(p =>
 {
