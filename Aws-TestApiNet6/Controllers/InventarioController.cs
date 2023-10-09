@@ -6,8 +6,7 @@ using Repository.Access;
 namespace Aws_TestApiNet6.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    [Authorize]
+    [Route("api/[controller]")] 
     public class InventarioController : ControllerBase
     {
 

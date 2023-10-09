@@ -1,0 +1,19 @@
+# Copyright Fauna, Inc.
+# SPDX-License-Identifier: MIT-0
+
+
+version: 1.0
+runtime: nodejs12
+
+build:
+  commands:
+    build:
+      - npm ci
+
+run:
+  command: npm run start
+  network:
+    port: 3000
+  env:
+    - name: FAUNA_SECRET_PARAMETER
+      value: fauna-secret

@@ -9,7 +9,7 @@
     "ng": "ng",
     "start": "ng serve --port 8080 --serve-path Steel",
     "watch1": "npm install && ng serve --port 4502 --watch --serve-path Steel",
-    "steel": "ng serve --port 4502 --watch --serve-path Steel",
+    "steel": "ng serve --port 44484 --watch --serve-path Steel",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

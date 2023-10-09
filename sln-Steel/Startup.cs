@@ -40,8 +40,8 @@ namespace sln_Steel
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string[] origins = Configuration.GetSection("Origins").AsEnumerable().Where(x => x.Value != null).Select(x => x.Value).ToArray();
-            //// CONFIGURACIÓN DEL SERVICIO DE AUTENTICACIÓN JWT
+            string[] origins = Configuration.GetSection("Origins").AsEnumerable().Where(x => x.Value != null).Select(x => x.Value).ToArray(); 
+            
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -67,7 +67,7 @@ namespace sln_Steel
             });
 
 
-            // AÑADIR LOS SERVICIOS DE SESIÓN.
+            // Aï¿½ADIR LOS SERVICIOS DE SESIï¿½N.
             services.AddDistributedMemoryCache();
             services.AddAppServices();
             services.AddSession();
@@ -168,7 +168,7 @@ namespace sln_Steel
             app.UseAuthentication();
 
             app.UseCors(corsPolicy);
-            // AÑADIR LA SESIÓN DEBE IR SIEMPRE ANTES DE app.UseMvc
+            // Aï¿½ADIR LA SESIï¿½N DEBE IR SIEMPRE ANTES DE app.UseMvc
             //app.UseSession();
 
             //app.UseSignalR(routes =>

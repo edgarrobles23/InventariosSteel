@@ -46,7 +46,7 @@ export class InventarioMainComponent extends BaseCustomComponent implements OnIn
   Usuario: any;
   FilterParamsFg: FormGroup;
   panelOpenState: boolean = true;
-
+  minHeight: number = 600;
   Permisos: any = {};
 
   //Dimensiones de Pantalla
@@ -58,7 +58,7 @@ export class InventarioMainComponent extends BaseCustomComponent implements OnIn
   @ViewChild('ActionsButtonsDiv') private ActionsButtonsDiv: ElementRef | any;
   BodyHeight: any = {
     Container: '',
-    Table: '',
+    Table: `min-height:${this.minHeight}px;height:${this.minHeight}px;`,
   };
 
   constructor(
@@ -125,10 +125,12 @@ export class InventarioMainComponent extends BaseCustomComponent implements OnIn
       const hFilterParams = 56; //this.FilterParamsDiv.nativeElement.offsetHeight;
       const hFilterParams2 = this.FilterParamsDiv2.nativeElement.offsetHeight;
       const hActionsButtons = this.ActionsButtonsDiv.nativeElement.offsetHeight;
-      this.BodyHeight = {
-        Container: `height: ${window.innerHeight || hModule}px`,
-        Table: `height: ${hModule - (hFilterParams + hFilterParams2 + hActionsButtons + 42)}px`,
-      };
+
+      if (hModule - (hFilterParams + hFilterParams2 + hActionsButtons + 42) >= this.minHeight)
+        this.BodyHeight = {
+          Container: `height: ${window.innerHeight || hModule}px`,
+          Table: `height: ${hModule - (hFilterParams + hFilterParams2 + hActionsButtons + 42)}px;`,
+        };
       this._changeDetectorRef.markForCheck();
     }, 100);
 

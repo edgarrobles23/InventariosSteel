@@ -56,7 +56,8 @@ export class HttpService {
 
   toString(o: any) {
     Object.keys(o).forEach((k) => {
-      if (typeof o[k] === 'object') {
+      if (o[k] == null) o[k] = o[k];
+      else if (typeof o[k] === 'object') {
         return this.toString(o[k]);
       }
 
