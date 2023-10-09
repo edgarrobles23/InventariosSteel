@@ -70,8 +70,8 @@ namespace Aws_TestApiNet6.Controllers
 
                     return StatusCode(200, new
                     {
-                        token.Token,
-                        token.RefreshToken,
+                        Token=token.Token,
+                        RefreshToken=token.RefreshToken,
                         MenuUsuario = menuUsuario,
                         Opciones = opciones,
                         InfoUser = _userInfo

@@ -51,7 +51,19 @@ export class HttpService {
     if (user) Object.assign(queryParams || {}, { IdUsuario: user });
     if (idempresa) Object.assign(queryParams || {}, { IdEmpresa: idempresa });
 
-    return queryParams;
+    return this.toString(queryParams);
+  }
+
+  toString(o: any) {
+    Object.keys(o).forEach((k) => {
+      if (typeof o[k] === 'object') {
+        return this.toString(o[k]);
+      }
+
+      o[k] = '' + o[k];
+    });
+
+    return o;
   }
   /**
    * @description Transforma el objeto en parámetros que serán utilizados en los URL

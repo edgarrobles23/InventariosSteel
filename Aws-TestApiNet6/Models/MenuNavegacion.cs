@@ -17,6 +17,6 @@
 
     public class MenuNavegacion : MenuNavegacionItem
     {
-        public List<MenuNavegacionItem> Children { get; set; }
+        public List<MenuNavegacionItem> Children_ { get; set; }
     }
 }

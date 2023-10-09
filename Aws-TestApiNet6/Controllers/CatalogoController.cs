@@ -22,7 +22,7 @@ namespace Aws_TestApiNet6.Controllers
 
         [HttpGet]
         public async Task<IActionResult> Get()
-        { 
+        {
             try
             {
                 Dictionary<string, string> Data = new Dictionary<string, string>();
@@ -58,5 +58,7 @@ namespace Aws_TestApiNet6.Controllers
             }
 
         }
+
+       
     }
 }

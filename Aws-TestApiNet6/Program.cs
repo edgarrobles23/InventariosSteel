@@ -22,8 +22,7 @@ builder.Services.AddCors(opt =>
         builder.AllowAnyHeader();
         builder.AllowAnyMethod();
         builder.AllowCredentials();
-        //builder.WithOrigins(origins);
-        builder.AllowAnyOrigin();
+        builder.WithOrigins(origins);
     });
 });
 
@@ -84,11 +83,19 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
 builder.Services.AddEndpointsApiExplorer();
+// Add services to the container.
+builder.Services.AddControllersWithViews().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
 var app = builder.Build();
 app.UseAuthentication();
 app.UseAuthorization();
 
+//app.UseHttpsRedirection(); 
+//app.UseRouting();
 app.UseMiddleware<TokenMiddleware>();// app.UseHttpsRedirection();
+app.UseCors(corsPolicy);
+
+
 
 var games = new[]
 {

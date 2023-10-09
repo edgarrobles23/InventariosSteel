@@ -365,11 +365,11 @@ namespace Aws_TestApiNet6.Utilities
                 {
                     int idMenuSuperior = Convert.ToInt32(opcion["IDMenuSuperior"]);
                     MenuNavegacion menuSuperior = menu.Find(m => m.idOpcion == idMenuSuperior);
-                    if (menuSuperior.Children == null)
+                    if (menuSuperior.Children_ == null)
                     {
-                        menuSuperior.Children = new List<MenuNavegacionItem>();
+                        menuSuperior.Children_ = new List<MenuNavegacionItem>();
                     }
-                    menuSuperior.Children.Add(new MenuNavegacionItem
+                    menuSuperior.Children_.Add(new MenuNavegacionItem
                     {
                         id = Convert.ToString($"{opcion["Opcion"]}-{i}").Replace(" ", string.Empty),
                         type = "basic",
